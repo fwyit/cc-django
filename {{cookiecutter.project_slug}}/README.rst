@@ -14,58 +14,63 @@
 :License: {{cookiecutter.open_source_license}}
 {% endif %}
 
-Settings
+配置
 --------
 
-Moved to settings_.
+本项目基于 cookiecutter-django 进行二次开发，具体项目配置可以参考: settings_.
 
 .. _settings: http://cookiecutter-django.readthedocs.io/en/latest/settings.html
 
-Basic Commands
+基本命令
 --------------
 
 Setting Up Your Users
 ^^^^^^^^^^^^^^^^^^^^^
 
-* To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
+* 直接使用页面中的"注册"链接，创建 **普通用户** 。
+    当提交时，将进入"邮件验证"页面，通过控制台查看模拟发送的邮件内容。
+    复制地址至浏览器，点击验证后即注册成功。
 
-* To create an **superuser account**, use this command::
+* 通过下面命令创建 **超级管理员** ::
 
     $ python manage.py createsuperuser
 
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
+通常，你可以通过在chrome中登录普通用户，在firefox(或其他)中登录超级管理员。这样您可以方便查看两者的区别。
 
-Type checks
+
+类型监测
 ^^^^^^^^^^^
 
-Running type checks with mypy:
+可以通过mypy来监测当前类型:
 
 ::
 
-  $ mypy {{cookiecutter.project_slug}}
+  $ mypy nbsync
 
-Test coverage
+
+覆盖测试
 ^^^^^^^^^^^^^
 
-To run the tests, check your test coverage, and generate an HTML coverage report::
+运行下述命令可以进行覆盖测试，并生成一份HTML的测试结果::
 
     $ coverage run -m pytest
     $ coverage html
     $ open htmlcov/index.html
 
-Running tests with py.test
+运行测试用例 py.test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
   $ pytest
 
-Live reloading and Sass CSS compilation
+自加载以及Sass CSS编译
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Moved to `Live reloading and SASS compilation`_.
+请查看 `Live reloading and SASS compilation`_.
 
 .. _`Live reloading and SASS compilation`: http://cookiecutter-django.readthedocs.io/en/latest/live-reloading-and-sass-compilation.html
+
 
 {% if cookiecutter.use_celery == "y" %}
 
@@ -131,10 +136,11 @@ The system is setup with reasonable defaults, including 404 logging and integrat
 You must set the DSN url in production.
 {% endif %}
 
-Deployment
+
+部署
 ----------
 
-The following details how to deploy this application.
+以下将列举如何部署项目
 {% if cookiecutter.use_heroku.lower() == "y" %}
 
 Heroku
@@ -149,9 +155,10 @@ See detailed `cookiecutter-django Heroku documentation`_.
 Docker
 ^^^^^^
 
-See detailed `cookiecutter-django Docker documentation`_.
+详见 `cookiecutter-django Docker documentation`_.
 
 .. _`cookiecutter-django Docker documentation`: http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html
+
 {% endif %}
 
 {% if cookiecutter.custom_bootstrap_compilation == "y" %}
