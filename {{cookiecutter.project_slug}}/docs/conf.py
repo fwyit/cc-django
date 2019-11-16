@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # {{ cookiecutter.project_name }} documentation build configuration file, created by
 # sphinx-quickstart.
 #
@@ -39,7 +41,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "{{ cookiecutter.project_name }}"
+project = u"{{ cookiecutter.project_name }}"
 copyright = """{% now 'utc', '%Y' %}, {{ cookiecutter.author_name }}"""
 
 # The version info for the project you're documenting, acts as replacement for
@@ -163,7 +165,7 @@ html_static_path = ["_static"]
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "{{ cookiecutter.project_slug }}doc"
+htmlhelp_basename = u"{{ cookiecutter.project_slug }}文档"
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -182,9 +184,9 @@ latex_elements = {
 latex_documents = [
     (
         "index",
-        "{{ cookiecutter.project_slug }}.tex",
-        "{{ cookiecutter.project_name }} Documentation",
-        """{{ cookiecutter.author_name }}""",
+        u"{{ cookiecutter.project_slug }}.tex",
+        u"{{ cookiecutter.project_name }} Documentation",
+        u"""{{ cookiecutter.author_name }}""",
         "manual",
     )
 ]
@@ -217,9 +219,9 @@ latex_documents = [
 man_pages = [
     (
         "index",
-        "{{ cookiecutter.project_slug }}",
-        "{{ cookiecutter.project_name }} Documentation",
-        ["""{{ cookiecutter.author_name }}"""],
+        u"{{ cookiecutter.project_slug }}",
+        u"{{ cookiecutter.project_name }} Documentation",
+        [u"""{{ cookiecutter.author_name }}"""],
         1,
     )
 ]
@@ -236,11 +238,11 @@ man_pages = [
 texinfo_documents = [
     (
         "index",
-        "{{ cookiecutter.project_slug }}",
-        "{{ cookiecutter.project_name }} Documentation",
-        """{{ cookiecutter.author_name }}""",
-        "{{ cookiecutter.project_name }}",
-        """{{ cookiecutter.description }}""",
+        u"{{ cookiecutter.project_slug }}",
+        u"{{ cookiecutter.project_name }} Documentation",
+        u"""{{ cookiecutter.author_name }}""",
+        u"{{ cookiecutter.project_name }}",
+        u"""{{ cookiecutter.description }}""",
         "Miscellaneous",
     )
 ]
