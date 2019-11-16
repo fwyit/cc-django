@@ -3,7 +3,7 @@
 
 想在docker中调用远程python，首先得要确定pycharm中配置docker信息。
 
-从 *【Settings > Build, Execution, Deployment > Docker】* 。 
+从 *【Settings > Build, Execution, Deployment > Docker】* 。
 
 * 如果使用linux，可以直接通过使用socket `unix:///var/run/docker.sock` ；
 * 如果使用Windows或者MacOS，请确定docker-machine已经安装，然后通过 *【Import credentials from Docker Machine】* 配置docker-machine。
