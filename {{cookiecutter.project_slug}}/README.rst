@@ -77,16 +77,16 @@ Setting Up Your Users
 Celery
 ^^^^^^
 
-This app comes with Celery.
+此项目整合Celery项目
 
-To run a celery worker:
+创建celery的job:
 
 .. code-block:: bash
 
-    cd {{cookiecutter.project_slug}}
+    cd cmdb
     celery -A config.celery_app worker -l info
 
-Please note: For Celery's import magic to work, it is important *where* the celery commands are run. If you are in the same folder with *manage.py*, you should be right.
+请注意：鉴于import的特性，需要进入到项目路径下使用celery命令。以上步骤需要在**manage.py**同级目录下执行。
 
 {% endif %}
 {% if cookiecutter.use_mailhog == "y" %}
@@ -94,12 +94,16 @@ Please note: For Celery's import magic to work, it is important *where* the cele
 Email Server
 ^^^^^^^^^^^^
 {% if cookiecutter.use_docker == 'y' %}
-In development, it is often nice to be able to see emails that are being sent from your application. For that reason local SMTP server `MailHog`_ with a web interface is available as docker container.
 
-Container mailhog will start automatically when you will run all docker containers.
-Please check `cookiecutter-django Docker documentation`_ for more details how to start all containers.
+开发过程中，经常需要从程序中发送邮件。故本次使用docker容器创建一个本地SMTP服务 `MailHog`_ 。
+当使用`docker-compose up`启动所有容器时，将自动启动mailhog服务。
 
-With MailHog running, to view messages that are sent by your application, open your browser and go to ``http://127.0.0.1:8025``
+更多详情，请参考 `cookiecutter-django Docker documentation`。
+
+当mailhog启动时，可以通过打开浏览器访问``http://127.0.0.1:8025``来查看邮件信息。
+
+.. _MailHog: https://github.com/mailhog/MailHog
+
 {% else %}
 In development, it is often nice to be able to see emails that are being sent from your application. If you choose to use `MailHog`_ when generating the project a local SMTP server with a web interface will be available.
 
@@ -130,10 +134,10 @@ Now you have your own mail server running locally, ready to receive whatever you
 Sentry
 ^^^^^^
 
-Sentry is an error logging aggregator service. You can sign up for a free account at  https://sentry.io/signup/?code=cookiecutter  or download and host it yourself.
-The system is setup with reasonable defaults, including 404 logging and integration with the WSGI application.
+Sentry是一个错误日志收集工具。可以通过 https://sentry.io/signup/?code=cookiecutter 来创建一个免费账户或者直接在本地进行安装。
+程序将自动创建包括但不限于404登录以及与其他WSGI交互的应用程序。
+生产环境上需要自定义 **DSN** 。
 
-You must set the DSN url in production.
 {% endif %}
 
 
@@ -146,7 +150,7 @@ You must set the DSN url in production.
 Heroku
 ^^^^^^
 
-See detailed `cookiecutter-django Heroku documentation`_.
+详见 `cookiecutter-django Heroku documentation`_.
 
 .. _`cookiecutter-django Heroku documentation`: http://cookiecutter-django.readthedocs.io/en/latest/deployment-on-heroku.html
 {% endif %}
@@ -165,13 +169,13 @@ Docker
 Custom Bootstrap Compilation
 ^^^^^^
 
-The generated CSS is set up with automatic Bootstrap recompilation with variables of your choice.
-Bootstrap v4 is installed using npm and customised by tweaking your variables in ``static/sass/custom_bootstrap_vars``.
+您可以自己选择bootstrap版本来进行CSS等样式选择。
+使用npm，可以自动在``static/sass/custom_bootstrap_vars``文件中选择bootstrap v4版本所需要编译的组建。
 
-You can find a list of available variables `in the bootstrap source`_, or get explanations on them in the `Bootstrap docs`_.
+可以通过 `in the bootstrap source`_ 查询所有可以使用的变量，或在 `Bootstrap docs`_ 中查看组建详情。
 
 {% if cookiecutter.js_task_runner == 'Gulp' %}
-Bootstrap's javascript as well as its dependencies is concatenated into a single file: ``static/js/vendors.js``.
+Bootstrap的javasript将合并至一个统一文件``static/js/vendors.js``。
 {% endif %}
 
 .. _in the bootstrap source: https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss
